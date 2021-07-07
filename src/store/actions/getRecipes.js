@@ -4,11 +4,11 @@ import api from "../api";
 export const getRecipes = () => {
   return async function (dispatch) {
     try {
-      const response = await Service.getRequest(api);
+      const { data } = await Service.getRequest(api);
       const action = {
         type: 'GET_RECIPES',
         payload: {
-          response: response.data,
+          response: data,
         },
       };
 

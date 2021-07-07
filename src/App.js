@@ -1,12 +1,12 @@
 import React from 'react';
 
 /* Layouts */
-import GetRecipes from './components/GetRecipes';
+import ListRecipes from './components/ListRecipes';
 
 const App = () => {
   return (
     <div className="App">
-      <GetRecipes />
+      <ListRecipes />
     </div>
   );
 }

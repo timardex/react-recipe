@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import {connect} from 'react-redux';
 
-import {getRecipes} from '../store/actions';
+import {getRecipes} from '../store/actions/getRecipes';
 
 const ListRecipes = (props) => {
   const { recipes, getRecipes } = props;

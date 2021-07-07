@@ -1,5 +1,5 @@
-import Service from "./service";
-const api = 'https://fastapi-crud.herokuapp.com/recipe';
+import Service from "../service";
+import api from "../api";
 
 export const getRecipes = () => {
   return async function (dispatch) {

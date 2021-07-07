@@ -1,26 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import {connect} from 'react-redux';
 
-const GetRecipes = (props) => {
-  const { service, api_base } = props;
+import {getRecipes} from '../store/actions';
 
-  const [recipes, getRecipes] = useState(null);
+const ListRecipes = (props) => {
+  const { recipes, getRecipes } = props;
 
   useEffect(() => {
-    const response = async () => {
-      try {
-        const data = await service.getRequest(api_base);
-        getRecipes(data.data);
-      } catch (error) {
-        return error;
-      }
-    }
-    response();
-  }, [api_base, service]);
+    getRecipes();
+  }, [getRecipes]);
 
   return (
     <div id="get-recipes">
       <ul>
-        {recipes !== null && recipes.map((item, ) => {
+        {typeof recipes !== 'undefined' && recipes.map((item, ) => {
           return <li key={item.id}>{item.name}
             <ul>
               {item.ingredients.length > 0 && item.ingredients.map((ing, index) => {
@@ -34,4 +27,18 @@ const GetRecipes = (props) => {
   );
 };
 
-export default GetRecipes;
+const mapStateToProps = (state) => {
+  return {
+    recipes: state.recipes,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getRecipes: () => {
+      dispatch(getRecipes());
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListRecipes);

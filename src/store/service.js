@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { apiHeader } from './api';
+
+const apiHeader = () => {
+  return {
+    Accept: 'application/json',
+  };
+};
 
 class Service {
   async getRequest(api) {

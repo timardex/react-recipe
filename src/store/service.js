@@ -3,6 +3,7 @@ import axios from 'axios';
 const apiHeader = () => {
   return {
     Accept: 'application/json',
+    'Content-Type': 'application/json',
   };
 };
 

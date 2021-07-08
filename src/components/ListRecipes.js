@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import {connect} from 'react-redux';
 
-import {getRecipes} from '../store/actions/getRecipes';
+import { getRecipes } from '../store/actions/getRecipes';
 
 const ListRecipes = (props) => {
-  const { recipes, getRecipes } = props;
+  const { recipes, apiResponse, getRecipes } = props;
 
   useEffect(() => {
     getRecipes();
-  }, [getRecipes]);
+  }, [getRecipes, apiResponse]);
 
   return (
-    <div id="get-recipes">
+    <div id="list-recipes">
       <ul>
         {typeof recipes !== 'undefined' && recipes.map((item, ) => {
           return <li key={item.id}>{item.name}
@@ -27,13 +27,14 @@ const ListRecipes = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     recipes: state.recipes,
+    apiResponse: state.apiResponse,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     getRecipes: () => {
       dispatch(getRecipes());

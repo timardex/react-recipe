@@ -2,6 +2,9 @@ import React from 'react';
 
 const Form = (props) => {
   const { recipe, onChange, onClick } = props;
+  const disableBtn = () => {
+    return recipe.ingredient === '';
+  }
   return (
     <div>
       <div className="form-group">
@@ -21,7 +24,9 @@ const Form = (props) => {
           value={recipe.ingredient}
           onChange={e => onChange(e)}
         />
-        <button onClick={e => onClick()} disabled={recipe.ingredient === ''}>Add ingredient</button>
+        <button
+          onClick={e => disableBtn() ? null : onClick()}
+          disabled={disableBtn()}>Add ingredient</button>
       </div>
     </div>
   );

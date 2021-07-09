@@ -23,6 +23,10 @@ const CreateRecipe = () => {
     }));
   };
 
+  const disableBtn = () => {
+    return recipe.name === '' || recipe.ingredients.length === 0;
+  }
+
   const addIngredients = () => {
     setupRecipe({
       name: recipe.name,
@@ -66,7 +70,9 @@ const CreateRecipe = () => {
         ingredients={recipe.ingredients}
         onClick={deleteIngredient}
       />
-      <button onClick={e => saveRecipe()} disabled={recipe.name === '' || recipe.ingredients.length === 0}>Save Recipe</button>
+      <button
+        onClick={e => disableBtn() ? null : saveRecipe()}
+        disabled={disableBtn()}>Save Recipe</button>
     </div>
   );
 };

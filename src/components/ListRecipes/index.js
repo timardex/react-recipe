@@ -15,12 +15,12 @@ const ListRecipes = () => {
     dispatch(getRecipes());
   }, [dispatch, apiResponse]);
 
-  const removeItem = (id) => {
-    dispatch(deleteRecipe(id))
-  };
-
-  const editItem = (id) => {
-    dispatch(getRecipe(id))
+  const handleClick = (type, id) => {
+    if (type === 'remove') {
+      dispatch(deleteRecipe(id))
+    } else {
+      dispatch(getRecipe(id))
+    }
   };
 
   const renderList = () => {
@@ -28,8 +28,8 @@ const ListRecipes = () => {
       <ul className="list">
         {recipes.map((item, ) => {
           return <li key={item.id} className="list-item">
-                  <button onClick={e => removeItem(item.id)}>X</button>
-                  <button onClick={e => editItem(item.id)}>Edit</button>
+                  <button onClick={e => handleClick('remove', item.id)}>X</button>
+                  <button onClick={e => handleClick('edit', item.id)}>Edit</button>
                   <span>{item.name}</span>
                   <ul>
                     {item.ingredients.length > 0 && item.ingredients.map((ing, index) => {

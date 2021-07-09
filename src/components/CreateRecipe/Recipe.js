@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Recipe = (props) => {
-  const { recipe, ingredients, onClick } = props;
+  const { recipe, ingredients, deleteIngredient, editIngredient } = props;
   return (
     <div>
       {recipe.name && <p>Name: {recipe.name}</p>}
@@ -10,7 +10,9 @@ const Recipe = (props) => {
       <ul>
         {ingredients.map((item, index) => {
           return <li key={index}>
-                  {item} <button onClick={e => onClick(item)}>Delete</button>
+                  {item}
+                  <button onClick={e => deleteIngredient(item)}>Delete</button>
+                  <button onClick={e => editIngredient(item)}>Edit</button>
                 </li>
         })}
       </ul>

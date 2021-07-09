@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Form = (props) => {
-  const { recipe, onChange, onClick } = props;
+  const { recipe, handleInputChange, addIngredients } = props;
   const disableBtn = () => {
     return recipe.ingredient === '';
   }
@@ -13,7 +13,7 @@ const Form = (props) => {
           name="name"
           placeholder="Enter recipe name"
           value={recipe.name}
-          onChange={e => onChange(e)}
+          onChange={e => handleInputChange(e)}
         />
       </div>
       <div className="form-group">
@@ -22,10 +22,10 @@ const Form = (props) => {
           name="ingredient"
           placeholder="Enter recipe ingredients"
           value={recipe.ingredient}
-          onChange={e => onChange(e)}
+          onChange={e => handleInputChange(e)}
         />
         <button
-          onClick={e => disableBtn() ? null : onClick()}
+          onClick={e => disableBtn() ? null : addIngredients()}
           disabled={disableBtn()}>Add ingredient</button>
       </div>
     </div>

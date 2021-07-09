@@ -5,7 +5,7 @@ const deleteRecipe = (param) => {
   return async function (dispatch) {
     try {
       const request = `${api}${param}`
-      const data = await Service.deleteRequest(request);
+      const {data} = await Service.deleteRequest(request);
       const action = {
         type: 'DELETE_RECIPE',
         payload: {

@@ -12,7 +12,10 @@ const getRecipes = () => {
         },
       };
 
-      dispatch(action);
+      // helper to show apiResponse inside Confrimation component
+      setTimeout(() => {
+        dispatch(action);
+      }, 2000);
 
     } catch(error) {
       const action = {

@@ -5,7 +5,7 @@ const putRecipe = (param, id) => {
   return async function (dispatch) {
     try {
       const request = `${api}${id}`;
-      const data = await Service.putRequest(request, param);
+      const {data} = await Service.putRequest(request, param);
       const action = {
         type: 'PUT_RECIPE',
         payload: {

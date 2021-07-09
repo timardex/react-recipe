@@ -70,7 +70,7 @@ const CreateEditRecipe = () => {
       ingredients: recipe.ingredients,
     };
 
-    if (typeof recipeToEdit !== 'undefined') {
+    if (checkUndefined()) {
       const id = recipeToEdit.id;
       dispatch(putRecipe(payload, id));
     } else {

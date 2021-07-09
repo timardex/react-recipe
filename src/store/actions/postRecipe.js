@@ -4,7 +4,7 @@ import api from "../api";
 const postRecipe = (param) => {
   return async function (dispatch) {
     try {
-      const data = await Service.postRequest(api, param);
+      const {data} = await Service.postRequest(api, param);
       const action = {
         type: 'POST_RECIPE',
         payload: {

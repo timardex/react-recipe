@@ -19,10 +19,10 @@ const ListRecipes = () => {
     dispatch(deleteRecipe(id))
   };
 
-  return (
-    <div id="list-recipes">
+  const renderList = () => {
+    return (
       <ul className="list">
-        {typeof recipes !== 'undefined' && recipes.map((item, ) => {
+        {recipes.map((item, ) => {
           return <li key={item.id} className="list-item">
                   <button onClick={e => removeItem(item.id)}>X</button>
                   <span>{item.name}</span>
@@ -34,6 +34,18 @@ const ListRecipes = () => {
                 </li>
         })}
       </ul>
+    );
+  };
+
+  const conditionalRendering = () => {
+    if (typeof recipes !== 'undefined') {
+      return renderList();
+    }
+    return <p>Loading...</p>
+  }
+  return (
+    <div id="list-recipes">
+      { conditionalRendering() }
     </div>
   );
 };

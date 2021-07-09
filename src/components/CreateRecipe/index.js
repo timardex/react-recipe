@@ -61,7 +61,7 @@ const CreateRecipe = () => {
         ingredients={ingredients}
         onClick={deleteIngredient}
       />
-      <button onClick={e => saveRecipe()}>Save Recipe</button>
+      <button onClick={e => saveRecipe()} disabled={recipe.name === '' || ingredients.length === 0}>Save Recipe</button>
     </div>
   );
 };

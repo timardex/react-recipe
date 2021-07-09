@@ -98,7 +98,8 @@ const CreateEditRecipe = () => {
       />
       <button
         onClick={e => disableBtn() ? null : saveRecipe()}
-        disabled={disableBtn()}>Save Recipe</button>
+        disabled={disableBtn()}
+        className="save-btn">Save Recipe</button>
     </div>
   );
 };

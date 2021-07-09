@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import {connect} from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import {postRecipe} from '../../store/actions/postRecipe';
 
 import Form from './Form';
 import Recipe from './Recipe';
 
-const CreateRecipe = (props) => {
-  const { postRecipe } = props;
+const CreateRecipe = () => {
+  const dispatch = useDispatch();
 
   const [recipe, setupRecipe] = useState({
     name: '',
@@ -46,7 +46,7 @@ const CreateRecipe = (props) => {
       ingredient: '',
     });
     getIngredients([]);
-    postRecipe(payload);
+    dispatch(postRecipe(payload));
   }
 
   return (
@@ -66,12 +66,4 @@ const CreateRecipe = (props) => {
   );
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    postRecipe: (payload) => {
-      dispatch(postRecipe(payload));
-    },
-  };
-};
-
-export default connect(null, mapDispatchToProps)(CreateRecipe);
+export default CreateRecipe;

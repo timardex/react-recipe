@@ -6,6 +6,8 @@ import { postRecipe, putRecipe } from '../../store/actions';
 import Form from './Form';
 import Recipe from './Recipe';
 
+import './styles.scss';
+
 const CreateEditRecipe = () => {
   const dispatch = useDispatch();
   const recipeToEdit = useSelector(state => state.recipe);

@@ -20,7 +20,7 @@ const Form = (props) => {
         <input
           type="text"
           name="ingredient"
-          placeholder="Enter recipe ingredients"
+          placeholder="Enter recipe ingredient"
           value={recipe.ingredient}
           onChange={e => handleInputChange(e)}
         />

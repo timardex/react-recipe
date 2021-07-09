@@ -59,7 +59,7 @@ const CreateRecipe = () => {
   }
 
   return (
-    <div id="create-recipes">
+    <div id="create-recipe">
       <Form
         recipe={recipe}
         onChange={handleInputChange}

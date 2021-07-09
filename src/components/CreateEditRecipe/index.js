@@ -88,13 +88,12 @@ const CreateEditRecipe = () => {
       <Form
         recipe={recipe}
         handleInputChange={handleInputChange}
-        addIngredients={handleClick}
+        handleClick={handleClick}
       />
       <Recipe 
         recipe={recipe}
         ingredients={recipe.ingredients}
-        deleteIngredient={handleClick}
-        editIngredient={handleClick}
+        handleClick={handleClick}
       />
       <button
         onClick={e => disableBtn() ? null : saveRecipe()}

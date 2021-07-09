@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Form = (props) => {
-  const { recipe, handleInputChange, addIngredients } = props;
+  const { recipe, handleInputChange, handleClick } = props;
   const disableBtn = () => {
     return recipe.ingredient === '';
   }
@@ -25,7 +25,7 @@ const Form = (props) => {
           onChange={e => handleInputChange(e)}
         />
         <button
-          onClick={e => disableBtn() ? null : addIngredients('add')}
+          onClick={e => disableBtn() ? null : handleClick('add')}
           disabled={disableBtn()}>Add ingredient</button>
       </div>
     </div>

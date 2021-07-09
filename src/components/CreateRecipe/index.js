@@ -12,9 +12,8 @@ const CreateRecipe = () => {
   const [recipe, setupRecipe] = useState({
     name: '',
     ingredient: '',
+    ingredients: [],
   });
-
-  const [ingredients, getIngredients] = useState([]);
 
   const handleInputChange = (e) => {
     const {name, value} = e.target;
@@ -25,28 +24,34 @@ const CreateRecipe = () => {
   };
 
   const addIngredients = () => {
-    getIngredients([...ingredients, recipe.ingredient]);
     setupRecipe({
       name: recipe.name,
       ingredient: '',
+      ingredients: [...recipe.ingredients, recipe.ingredient],
     });
   };
 
   const deleteIngredient = (item) => {
-    getIngredients(ingredients.filter(el => el !== item));
+    setupRecipe({
+      name: recipe.name,
+      ingredient: recipe.ingredient,
+      ingredients: recipe.ingredients.filter(el => el !== item)
+    });
   };
 
   const saveRecipe = () => {
     const payload = {
       name: recipe.name,
-      ingredients,
+      ingredients: recipe.ingredients,
     };
+
+    dispatch(postRecipe(payload));
+
     setupRecipe({
       name: '',
       ingredient: '',
+      ingredients: [],
     });
-    getIngredients([]);
-    dispatch(postRecipe(payload));
   }
 
   return (
@@ -58,10 +63,10 @@ const CreateRecipe = () => {
       />
       <Recipe 
         recipe={recipe}
-        ingredients={ingredients}
+        ingredients={recipe.ingredients}
         onClick={deleteIngredient}
       />
-      <button onClick={e => saveRecipe()} disabled={recipe.name === '' || ingredients.length === 0}>Save Recipe</button>
+      <button onClick={e => saveRecipe()} disabled={recipe.name === '' || recipe.ingredients.length === 0}>Save Recipe</button>
     </div>
   );
 };

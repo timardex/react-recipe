@@ -30,7 +30,7 @@ const ListRecipes = () => {
           return <li key={item.id} className="list-item">
                   <button onClick={e => handleClick('remove', item.id)}>X</button>
                   <button onClick={e => handleClick('edit', item.id)}>Edit</button>
-                  <span>{item.name}</span>
+                  <span>{item.id}. <u>{item.name}</u></span>
                   <ul>
                     {item.ingredients.length > 0 && item.ingredients.map((ing, index) => {
                       return <li key={index}>{ing}</li>

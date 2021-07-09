@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { postRecipe, putRecipe } from '../../store/actions';
@@ -6,9 +6,13 @@ import { postRecipe, putRecipe } from '../../store/actions';
 import Form from './Form';
 import Recipe from './Recipe';
 
-const CreateRecipe = () => {
+const CreateEditRecipe = () => {
   const dispatch = useDispatch();
   const recipeToEdit = useSelector(state => state.recipe);
+
+  const checkUndefined = useCallback(() => {
+    return typeof recipeToEdit !== 'undefined';
+  }, [recipeToEdit]);
 
   const [recipe, setupRecipe] = useState({
     id: null,
@@ -19,12 +23,12 @@ const CreateRecipe = () => {
 
   useEffect(() => {
     setupRecipe({
-      id: typeof recipeToEdit !== 'undefined' ? recipeToEdit.id : null,
-      name: typeof recipeToEdit !== 'undefined' ? recipeToEdit.name : '',
+      id: checkUndefined() ? recipeToEdit.id : null,
+      name: checkUndefined() ? recipeToEdit.name : '',
       ingredient: '',
-      ingredients: typeof recipeToEdit !== 'undefined' ? recipeToEdit.ingredients : [],
+      ingredients: checkUndefined() ? recipeToEdit.ingredients : [],
     });
-  }, [recipeToEdit]);
+  }, [recipeToEdit, checkUndefined]);
 
   const handleInputChange = (e) => {
     const {name, value} = e.target;
@@ -38,32 +42,25 @@ const CreateRecipe = () => {
     return recipe.name === '' || recipe.ingredients.length === 0;
   }
 
-  const addIngredients = () => {
-    setupRecipe({
-      id: null,
-      name: recipe.name,
-      ingredient: '',
-      ingredients: [...recipe.ingredients, recipe.ingredient],
-    });
-  };
+  const handleClick = (type, item) => {
+    let ingredient = '';
+    let ingredients = [...recipe.ingredients, recipe.ingredient];
 
-  const deleteIngredient = (item) => {
-    setupRecipe({
-      id: null,
-      name: recipe.name,
-      ingredient: recipe.ingredient,
-      ingredients: recipe.ingredients.filter(el => el !== item)
-    });
-  };
+    if (type === 'delete') {
+      ingredient = recipe.ingredient;
+      ingredients = recipe.ingredients.filter(el => el !== item);
+    } else if (type === 'edit') {
+      ingredient = recipe.ingredients.find(el => el === item);
+      ingredients = recipe.ingredients.filter(el => el !== item);
+    }
 
-  const editIngredient = (item) => {
     setupRecipe({
-      id: recipe.id,
+      id: type === 'edit' ? recipe.id : null,
       name: recipe.name,
-      ingredient: recipe.ingredients.find(el => el === item),
-      ingredients: recipe.ingredients.filter(el => el !== item),
+      ingredient,
+      ingredients,
     });
-  };
+  }
 
   const saveRecipe = () => {
     let payload = {
@@ -91,13 +88,13 @@ const CreateRecipe = () => {
       <Form
         recipe={recipe}
         handleInputChange={handleInputChange}
-        addIngredients={addIngredients}
+        addIngredients={handleClick}
       />
       <Recipe 
         recipe={recipe}
         ingredients={recipe.ingredients}
-        deleteIngredient={deleteIngredient}
-        editIngredient={editIngredient}
+        deleteIngredient={handleClick}
+        editIngredient={handleClick}
       />
       <button
         onClick={e => disableBtn() ? null : saveRecipe()}
@@ -106,4 +103,4 @@ const CreateRecipe = () => {
   );
 };
 
-export default CreateRecipe;
+export default CreateEditRecipe;

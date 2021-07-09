@@ -11,8 +11,8 @@ const Recipe = (props) => {
         {ingredients.map((item, index) => {
           return <li key={index}>
                   {item}
-                  <button onClick={e => deleteIngredient(item)}>Delete</button>
-                  <button onClick={e => editIngredient(item)}>Edit</button>
+                  <button onClick={e => deleteIngredient('delete', item)}>Delete</button>
+                  <button onClick={e => editIngredient('edit', item)}>Edit</button>
                 </li>
         })}
       </ul>

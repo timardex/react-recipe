@@ -25,7 +25,7 @@ const Form = (props) => {
           onChange={e => handleInputChange(e)}
         />
         <button
-          onClick={e => disableBtn() ? null : addIngredients()}
+          onClick={e => disableBtn() ? null : addIngredients('add')}
           disabled={disableBtn()}>Add ingredient</button>
       </div>
     </div>

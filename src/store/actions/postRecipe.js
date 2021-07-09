@@ -1,7 +1,7 @@
 import Service from "../service";
 import api from "../api";
 
-export const postRecipe = (param) => {
+const postRecipe = (param) => {
   return async function (dispatch) {
     try {
       const data = await Service.postRequest(api, param);
@@ -25,3 +25,5 @@ export const postRecipe = (param) => {
     }
   };
 };
+
+export default postRecipe;

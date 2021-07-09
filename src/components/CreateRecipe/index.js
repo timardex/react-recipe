@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import {postRecipe} from '../../store/actions/postRecipe';
+import { postRecipe } from '../../store/actions';
 
 import Form from './Form';
 import Recipe from './Recipe';

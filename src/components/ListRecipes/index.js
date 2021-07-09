@@ -3,8 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 
 import './styles.scss';
 
-import { getRecipes } from '../../store/actions/getRecipes';
-import { deleteRecipe } from '../../store/actions/deleteRecipe';
+import { getRecipes, deleteRecipe } from '../../store/actions';
 
 const ListRecipes = () => {
   const recipes = useSelector(state => state.recipes);

@@ -1,7 +1,7 @@
 import Service from "../service";
 import api from "../api";
 
-export const deleteRecipe = (param) => {
+const deleteRecipe = (param) => {
   return async function (dispatch) {
     try {
       const request = `${api}${param}`
@@ -26,3 +26,5 @@ export const deleteRecipe = (param) => {
     }
   };
 };
+
+export default deleteRecipe;

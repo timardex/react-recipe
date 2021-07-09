@@ -1,7 +1,7 @@
 import Service from "../service";
 import api from "../api";
 
-export const getRecipes = () => {
+const getRecipes = () => {
   return async function (dispatch) {
     try {
       const { data } = await Service.getRequest(api);
@@ -25,3 +25,5 @@ export const getRecipes = () => {
     }
   };
 };
+
+export default getRecipes;

@@ -94,7 +94,6 @@ const CreateEditRecipe = () => {
       />
       <Recipe 
         recipe={recipe}
-        ingredients={recipe.ingredients}
         handleClick={handleClick}
       />
       <button

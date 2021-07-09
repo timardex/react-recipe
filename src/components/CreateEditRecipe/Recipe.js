@@ -1,14 +1,14 @@
 import React from 'react';
 
 const Recipe = (props) => {
-  const { recipe, ingredients, handleClick } = props;
+  const { recipe, handleClick } = props;
   return (
     <div>
       {recipe.name && <p>Name: {recipe.name}</p>}
 
-      {ingredients.length > 0 && <p>Ingredients:</p>}
+      {recipe.ingredients.length > 0 && <p>Ingredients:</p>}
       <ul>
-        {ingredients.map((item, index) => {
+        {recipe.ingredients.map((item, index) => {
           return <li key={index}>
                   {item}
                   <button onClick={e => handleClick('delete', item)}>Delete</button>

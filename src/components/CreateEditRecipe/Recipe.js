@@ -14,8 +14,12 @@ const Recipe = (props) => {
         {recipe.ingredients.map((item, index) => {
           return <li key={index}>
                   {item}
-                  <button onClick={e => disableBtn() ? null : handleClick('delete', item)} disabled={disableBtn()}>Delete</button>
-                  <button onClick={e => disableBtn() ? null : handleClick('edit', item)} disabled={disableBtn()}>Edit</button>
+                  <button
+                    onClick={e => disableBtn() ? null : handleClick('delete', item)}
+                    disabled={disableBtn()}>Delete</button>
+                  <button
+                    onClick={e => disableBtn() ? null : handleClick('edit', item)}
+                    disabled={disableBtn()}>Edit</button>
                 </li>
         })}
       </ul>

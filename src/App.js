@@ -12,7 +12,7 @@ const App = () => {
     <div className="App">
       <ListRecipes />
       <CreateEditRecipe />
-      {typeof apiResponse !== 'undefined' && <Confirmation apiResponse={apiResponse.message}/>}
+      {typeof apiResponse !== 'undefined' && <Confirmation apiResponse={apiResponse}/>}
     </div>
   );
 }

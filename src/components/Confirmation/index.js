@@ -5,7 +5,7 @@ const Confirmation = (props) => {
   const { apiResponse } = props;
   return (
     <div id="confirmation">
-      {apiResponse}
+      {typeof apiResponse === 'string' ? apiResponse : `Recipe with id ${apiResponse} has been created`}
     </div>
   );
 }

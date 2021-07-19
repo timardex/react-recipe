@@ -26,7 +26,7 @@ const ListRecipes = () => {
   const renderList = () => {
     return (
       <ul className="list">
-        {recipes.map((item, ) => {
+        {recipes.map((item) => {
           return <li key={item.id} className="list-item">
                   <button onClick={e => handleClick('remove', item.id)}>X</button>
                   <button onClick={e => handleClick('edit', item.id)}>Edit</button>

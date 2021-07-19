@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { postRecipe, putRecipe } from '../../store/actions';
+import { postRecipe, putRecipe, getRecipes } from '../../store/actions';
 
 import Form from './Form';
 import Recipe from './Recipe';
@@ -77,13 +77,18 @@ const CreateEditRecipe = () => {
       dispatch(postRecipe(payload));
     }
     
+    cancelRecipe();
+  };
+
+  const cancelRecipe = () => {
     setupRecipe({
       id: null,
       name: '',
       ingredient: '',
       ingredients: [],
     });
-  }
+    dispatch(getRecipes());
+  };
 
   return (
     <div id="create-recipe">
@@ -100,6 +105,10 @@ const CreateEditRecipe = () => {
         onClick={e => disableBtn() ? null : saveRecipe()}
         disabled={disableBtn()}
         className="save-btn">Save Recipe</button>
+        
+      {!disableBtn() && <button
+        onClick={e => cancelRecipe()}
+        className="cancel-btn">Cancel Recipe</button>}
     </div>
   );
 };

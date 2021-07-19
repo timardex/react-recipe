@@ -3,5 +3,6 @@ export const GET_RECIPES = (state, action) => {
     ...state,
     recipes: action.payload.response,
     apiResponse: undefined,
+    recipe: undefined,
   };
 };

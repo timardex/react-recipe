@@ -47,7 +47,7 @@ const ListRecipes = () => {
       if(recipes.length > 0) {
         return renderList();
       }
-      return 'No recipe found, please create one below'
+      return <p>No recipe found, please create one below</p>
     }
     return <p>Loading...</p>
   }

@@ -41,7 +41,7 @@ const CreateEditRecipe = () => {
   };
 
   const disableBtn = () => {
-    return recipe.name === '' || recipe.ingredients.length === 0 || recipe.ingredient !== '';
+    return recipe.name === '' || recipe.ingredient !== '';
   }
 
   const handleClick = (type, item) => {

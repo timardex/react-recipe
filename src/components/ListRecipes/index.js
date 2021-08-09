@@ -28,7 +28,7 @@ const ListRecipes = () => {
       <ul className="list">
         {recipes.map((item) => {
           return <li key={item.id} className="list-item">
-                  <button onClick={e => handleClick('remove', item.id)}>X</button>
+                  <button onClick={e => handleClick('remove', item.id)}>Delete</button>
                   <button onClick={e => handleClick('edit', item.id)}>Edit</button>
                   <span>{item.id}. <u>{item.name}</u></span>
                   <ul>
@@ -44,7 +44,10 @@ const ListRecipes = () => {
 
   const conditionalRendering = () => {
     if (typeof recipes !== 'undefined') {
-      return renderList();
+      if(recipes.length > 0) {
+        return renderList();
+      }
+      return 'No recipe found, please create one below'
     }
     return <p>Loading...</p>
   }

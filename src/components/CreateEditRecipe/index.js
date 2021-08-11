@@ -71,8 +71,7 @@ const CreateEditRecipe = () => {
     };
 
     if (checkUndefined()) {
-      const id = recipeToEdit.id;
-      dispatch(putRecipe(payload, id));
+      dispatch(putRecipe(payload, recipeToEdit.id));
     } else {
       dispatch(postRecipe(payload));
     }

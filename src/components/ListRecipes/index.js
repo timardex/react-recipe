@@ -44,10 +44,7 @@ const ListRecipes = () => {
 
   const conditionalRendering = () => {
     if (typeof recipes !== 'undefined') {
-      if(recipes.length > 0) {
-        return renderList();
-      }
-      return <p>No recipe found, please create one below</p>
+      return recipes.length > 0 ? renderList() : <p>No recipe found, please create one below</p>;
     }
     return <p>Loading...</p>
   }

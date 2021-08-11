@@ -45,22 +45,17 @@ const CreateEditRecipe = () => {
   }
 
   const handleClick = (type, item) => {
-    let ingredient = '';
-    let ingredients = [...recipe.ingredients, recipe.ingredient];
-
-    if (type === 'delete') {
-      ingredient = recipe.ingredient;
-      ingredients = recipe.ingredients.filter(el => el !== item);
-    } else if (type === 'edit') {
-      ingredient = recipe.ingredients.find(el => el === item);
-      ingredients = recipe.ingredients.filter(el => el !== item);
-    }
-
     setupRecipe({
       id: type === 'edit' ? recipe.id : null,
       name: recipe.name,
-      ingredient,
-      ingredients,
+      ingredient: type === 'delete'
+        ? recipe.ingredient
+        : type === 'edit'
+        ? recipe.ingredients.find(el => el === item)
+        : '',
+      ingredients: type === 'delete' || type === 'edit'
+        ? recipe.ingredients.filter(el => el !== item)
+        : [...recipe.ingredients, recipe.ingredient],
     });
   }
 
